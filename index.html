@@ -1,4 +1,5 @@
 <html>
+<!-- CALL: https://web-platform-hocone.stackblitz.io?eventId=232&raceId=1138&apiKey=407e03de-a3d9-426c-bf6e-b73174331df6&page=1-->
   <head>
     <meta charset="UTF-8">
     
@@ -27,7 +28,7 @@
 
 
     <script>
-
+    
 						
     // for socket connection
     var app = angular.module('myApp', ['angular.filter']);
@@ -36,13 +37,18 @@
 
     app.controller('myCtrl', function($scope, $http, $interval) {		
 
-  
       var raceId = undefined;
       var locationId = undefined;
+      var eventId = undefined;
+      var apiKey = undefined;
+      var page = undefined;
 
       raceId = getParameterByName('raceid');
-      locationId = getParameterByName('locationid');
+      eventId = getParameterByName('eventId');
+      apiKey = getParameterByName('apiKey');
+      page = getParameterByName('page');
       
+      getT2WResult(eventId, raceId, apiKey, page, callback)
 
       if (raceId == undefined)
       {
@@ -53,9 +59,6 @@
         console.log("no valid locationid");
       }
           
-
-
-
       var setTopResult = function(data)
       {
         //console.log(data);
